@@ -52,6 +52,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.11.0)
+    pg (0.18.1)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -111,6 +112,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   icalendar
   jquery-rails
+  pg
   rails (= 3.2.19)
   sass-rails (~> 3.2.3)
   sqlite3
