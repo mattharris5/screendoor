@@ -6,7 +6,10 @@
 <% end %>
 
 <tr class="reservation <%= "info" if reservation.current? %> <%= "warning" if reservation.soon? %>" data-id="<%= reservation.id %>">
-	<td class="name"><%= link_to reservation.name, reservation %></td>
+	<td class="name">
+		<%= link_to reservation.name, reservation %>
+		<%= content_tag :small, "in #{distance_of_time_in_words reservation.start_date.midnight, Date.today.midnight}" if reservation.start_date < 4.weeks.from_now %>
+	</td>
 	<td class="status-muted"><%= reservation.status %></td>
 	<td><%= reservation.start_date.to_date.strftime("%a %b %d") %></td>
 	<td><%= reservation.end_date.to_date.strftime("%a %b %d") %></td>
