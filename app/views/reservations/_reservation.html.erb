@@ -1,0 +1,21 @@
+<%- if reservation.start_date.month != @current_month -%>
+	<%- @current_month = reservation.start_date.month -%>
+	<tr class="separator active">
+		<th colspan=20><%= reservation.start_date.strftime("%B %Y") %></th>
+	</tr>
+<% end %>
+
+<tr class="reservation <%= "info" if reservation.current? %> <%= "warning" if reservation.soon? %>" data-id="<%= reservation.id %>">
+	<td class="name"><%= link_to reservation.name, reservation %></td>
+	<td class="status-muted"><%= reservation.status %></td>
+	<td><%= reservation.start_date.to_date.strftime("%a %b %d") %></td>
+	<td><%= reservation.end_date.to_date.strftime("%a %b %d") %></td>
+	<td class="centered"><%= link_to (reservation.cleaning_scheduled? ? fa(:check, "success") : fa(:times, "muted")), 
+					reservation_path(reservation, reservation: { cleaning_scheduled: !reservation.cleaning_scheduled? }), 
+					method: :put %>
+					</td>
+	<td class="centered"><%= link_to (reservation.welcome_sent? ? fa(:check, "success") : fa(:times, "muted")), 
+					reservation_path(reservation, reservation: { welcome_sent: !reservation.welcome_sent? }), 
+					method: :put %>
+					</td>
+</tr>

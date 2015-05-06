@@ -1,0 +1,22 @@
+<ul>
+<%- for reservation in @reservations -%>
+
+	<%- if reservation.start_date.month != @current_month -%>
+		<%- @current_month = reservation.start_date.month -%>
+		<h5><%= reservation.start_date.strftime("%B %Y") %></h5>
+	<% end %>
+	
+	<li>
+		Check in <%= reservation.start_date.to_date.strftime("%A %b %d") %>
+		at <%= Preference.get(:checkin_time) %>
+		
+		&ndash;
+		
+		Check out <%= reservation.end_date.to_date.strftime("%A %b %d") %> 
+		at <%= Preference.get(:checkout_time) %>
+		
+		<%= content_tag :small, "(Previously scheduled)", class: "muted" if reservation.cleaning_scheduled? %>
+	</li>
+
+<% end %>
+</ul>

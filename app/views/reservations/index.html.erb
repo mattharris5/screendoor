@@ -1,0 +1,25 @@
+<small class="pull-right top-corner">
+	<i class="fa fa-cloud-download"></i>
+	<%= link_to "Updated #{time_ago_in_words Reservation.last_updated_at rescue "never"} ago", import_reservations_path, method: :post %>
+</small>
+
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Guest</th>
+			<th>Status</th>
+			<th>Start</th>
+			<th>End</th>
+			<th class="centered">Cleaning Scheduled</th>
+			<th class="centered">Welcome Email</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<%= render @reservations %>
+	</tbody>
+</table>
+
+<br />
+<%= link_to "Show all", all_reservations_path, :class => "btn" %>
+

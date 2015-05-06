@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_date: 2015-04-08 19:02:39
+  end_date: 2015-04-08 19:02:39
+  uid: MyString
+  name: MyString
+  status: MyString
+  welcome_sent: false
+  cleaning_scheduled: false
+
+two:
+  start_date: 2015-04-08 19:02:39
+  end_date: 2015-04-08 19:02:39
+  uid: MyString
+  name: MyString
+  status: MyString
+  welcome_sent: false
+  cleaning_scheduled: false
