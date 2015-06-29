@@ -21,4 +21,8 @@
 					reservation_path(reservation, reservation: { welcome_sent: !reservation.welcome_sent? }), 
 					method: :put %>
 					</td>
+	<td class="centered"><%= link_to (reservation.cleaning_completed? ? fa(:check, "success") : fa(:times, "muted")), 
+					reservation_path(reservation, reservation: { cleaning_completed: !reservation.cleaning_completed? }), 
+					method: :put %>
+					</td>
 </tr>

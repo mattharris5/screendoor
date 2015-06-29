@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150506065454) do
+ActiveRecord::Schema.define(:version => 20150629172515) do
 
   create_table "preferences", :force => true do |t|
     t.string   "key"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20150506065454) do
     t.boolean  "cleaning_scheduled"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "cleaning_completed"
   end
 
 end

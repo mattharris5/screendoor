@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Reservation < ActiveRecord::Base
-  attr_accessible :cleaning_scheduled, :end_date, :name, :start_date, :status, :uid, :welcome_sent
+  attr_accessible :cleaning_scheduled, :end_date, :name, :start_date, :status, :uid, :welcome_sent, :cleaning_completed
   
   validates_presence_of :uid
   validates_uniqueness_of :uid
