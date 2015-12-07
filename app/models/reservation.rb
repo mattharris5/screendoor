@@ -18,7 +18,7 @@ class Reservation < ActiveRecord::Base
     start_date.future? && start_date - Time.now < 5.days
   end
   
-  def self.import_from_ics(ics_file_uri = Preference.get(:ics_url))
+  def self.import_from_ics(ics_file_uri = ENV['ICS_URL'] || Preference.get(:ics_url))
 
     # Open a file or pass a string to the parser
     cal_file = open(ics_file_uri).read
