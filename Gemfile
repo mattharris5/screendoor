@@ -4,6 +4,7 @@ gem 'rails', '3.2.19'
 gem 'icalendar'
 gem "twitter-bootstrap-rails"
 gem 'jquery-rails'
+gem 'rollbar', '~> 1.2.7'
 
 group :development do
   gem 'sqlite3'
