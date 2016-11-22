@@ -15,3 +15,7 @@
 /tmp
 
 .env
+
+/public/assets/*
+
+.run

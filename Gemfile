@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
+ruby '2.2.4'
 
-gem 'rails', '3.2.19'
+gem 'rails', '4.2.7.1'
+gem 'puma'
 gem 'icalendar'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
-gem 'rollbar', '~> 1.2.7'
+gem 'rollbar'
+gem 'homeaway-api'
 
 group :development do
   gem 'sqlite3'
+  gem 'dotrun'
+  gem 'brakeman', require: false
 end
 
 group :production do
@@ -15,9 +20,7 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
-
-ruby '2.1.6'
