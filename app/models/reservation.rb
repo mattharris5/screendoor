@@ -9,6 +9,9 @@ class Reservation < ActiveRecord::Base
   default_scope order("start_date ASC")
   scope :future, where("end_date > ?", Time.now)
   scope :needs_housekeeping_scheduled, where(cleaning_scheduled: false)
+  scope :needs_welcome_sent, where(welcome_sent: false)
+  scope :needs_cleaning_completed, where(cleaning_completed: false)
+  scope :soon, where("start_date > ?", Time.now).where("start_date - ? < ?", Time.now, 5.days)
   
   def current?
     start_date.past? && end_date.future?
@@ -24,7 +27,7 @@ class Reservation < ActiveRecord::Base
     cal_file = open(ics_file_uri).read
 
     # Parser returns an array of calendars because a single file
-    # can have multiple calendars.    
+    # can have multiple calendars.
     cals = Icalendar.parse(cal_file)
     cal = cals.first
 

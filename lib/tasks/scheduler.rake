@@ -8,3 +8,13 @@ task :import_reservations => :environment do
     puts "Error"
   end
 end
+
+desc "Check if any tasks need to be completed and send emails as needed"
+task :notify_incomplete_tasks => :environment do
+  puts "Checking for incomplete tasks"
+  if Task.notify_incomplete!
+    puts "Successfully notified about incomplete tasks"
+  else
+    puts "Error"
+  end
+end
