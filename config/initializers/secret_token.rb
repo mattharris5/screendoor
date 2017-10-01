@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Screendoor::Application.config.secret_token = 'cb7e4db0dd0cb977b19c1c505a271b2ec3b11a08333ab5e2bbced4f749703518ac7fbf02c7db192a1dd3b314d6836d38b77de105133dc888d9e74d9520057acd'
+Screendoor::Application.config.secret_token = '53f9450d1d7db00ccb498682226a44b85ec6093e5523f714f696790ea36d9183296ddc31fbfc8411b7c1052ddf5287df2847e4740d5022eb8b8dc675fdcfc63e'

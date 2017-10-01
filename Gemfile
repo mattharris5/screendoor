@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.3.3'
 
 gem 'rails', '4.2.7.1'
 gem 'puma'
@@ -8,6 +8,8 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'rollbar'
 gem 'homeaway-api'
+gem 'sendgrid-ruby'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development do
   gem 'sqlite3'

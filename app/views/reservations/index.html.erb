@@ -3,7 +3,9 @@
 	<%= link_to "Updated #{time_ago_in_words Reservation.last_updated_at rescue "never"} ago", import_reservations_path, method: :post %>
 </small>
 
-<table class="table table-condensed">
+<%= Time.now.utc %>
+
+<table class="table table-condensed flip-scroll">
 	<thead>
 		<tr>
 			<th>Guest</th>
@@ -15,7 +17,7 @@
 			<th class="centered"><%= fa(:bed) %> Cleaned</th>
 		</tr>
 	</thead>
-	
+
 	<tbody>
 		<%= render @reservations %>
 	</tbody>
@@ -23,4 +25,3 @@
 
 <br />
 <%= link_to "Show all", all_reservations_path, :class => "btn" %>
-

@@ -1,0 +1,69 @@
+@media only screen and (max-width: 800px) {
+
+  .table {
+    width: 100%;
+
+    tr {
+      display: block;
+      margin-bottom: 1em;
+      padding-bottom: 1em;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+
+    th {
+      display: none;
+    }
+
+    tr.separator th {
+      display: block;
+    }
+
+    > tbody > tr > td {
+      display: block;
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: none;
+    }
+
+    td.centered {
+      text-align: left;
+    }
+
+    .checkmark-label {
+      margin-left: 1em;
+    }
+
+    td.name > a {
+      font-size: 120%;
+      display: block;
+      font-weight: bold;
+    }
+
+    td.status-muted {
+      display: inline;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+    }
+
+    td.start-date {
+      display: inline-block !important;
+      width: auto;
+      padding-right: 0;
+    }
+
+    td.end-date {
+      display: inline-block !important;
+      margin-left: 0;
+    }
+
+    td.end-date::before {
+      content: '– ';
+    }
+  }
+}

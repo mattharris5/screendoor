@@ -5,24 +5,25 @@
 	</tr>
 <% end %>
 
-<tr class="reservation <%= "info" if reservation.current? %> <%= "warning" if reservation.soon? %>" data-id="<%= reservation.id %>">
+<tr class="reservation <%#= "info" if reservation.current? %> <%#= "warning" if reservation.soon? %>" data-id="<%= reservation.id %>">
 	<td class="name">
 		<%= link_to reservation.name, reservation %>
-		<%= content_tag :small, "in #{distance_of_time_in_words reservation.start_date.midnight, Date.today.midnight}" if reservation.start_date < 4.weeks.from_now %>
+		<%= content_tag :span, pluralize(*reservation.time_until) if reservation.start_date < 4.weeks.from_now && !reservation.past? %>
+		<%= content_tag(:span, "Currrent Guest", class: "label label-warning") if reservation.current? %>
 	</td>
 	<td class="status-muted"><%= reservation.status %></td>
-	<td><%= reservation.start_date.to_date.strftime("%a %b %d") %></td>
-	<td><%= reservation.end_date.to_date.strftime("%a %b %d") %></td>
-	<td class="centered"><%= link_to (reservation.cleaning_scheduled? ? fa(:check, "success") : fa(:times, "muted")), 
-					reservation_path(reservation, reservation: { cleaning_scheduled: !reservation.cleaning_scheduled? }), 
+	<td class="start-date"><%= reservation.start_date.utc.strftime("%a, %b %d") %></td>
+	<td class="end-date"><%= reservation.end_date.utc.strftime("%a, %b %d") %></td>
+	<td class="centered"><%= link_to checkmark("Cleaning Scheduled", reservation.cleaning_scheduled?),
+					reservation_path(reservation, reservation: { cleaning_scheduled: !reservation.cleaning_scheduled? }),
 					method: :put %>
 					</td>
-	<td class="centered"><%= link_to (reservation.welcome_sent? ? fa(:check, "success") : fa(:times, "muted")), 
-					reservation_path(reservation, reservation: { welcome_sent: !reservation.welcome_sent? }), 
+	<td class="centered"><%= link_to checkmark("Welcome Sent", reservation.welcome_sent?),
+					reservation_path(reservation, reservation: { welcome_sent: !reservation.welcome_sent? }),
 					method: :put %>
 					</td>
-	<td class="centered"><%= link_to (reservation.cleaning_completed? ? fa(:check, "success") : fa(:times, "muted")), 
-					reservation_path(reservation, reservation: { cleaning_completed: !reservation.cleaning_completed? }), 
+	<td class="centered"><%= link_to checkmark("Cleaning Complete", reservation.cleaning_completed?),
+					reservation_path(reservation, reservation: { cleaning_completed: !reservation.cleaning_completed? }),
 					method: :put %>
 					</td>
 </tr>
