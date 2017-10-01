@@ -3,8 +3,6 @@
 	<%= link_to "Updated #{time_ago_in_words Reservation.last_updated_at rescue "never"} ago", import_reservations_path, method: :post %>
 </small>
 
-<%= Time.now.utc %>
-
 <table class="table table-condensed flip-scroll">
 	<thead>
 		<tr>
