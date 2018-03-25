@@ -3,6 +3,10 @@
   .table {
     width: 100%;
 
+    thead {
+      display: none;
+    }
+
     tr {
       display: block;
       margin-bottom: 1em;
@@ -11,13 +15,17 @@
       position: relative;
     }
 
-
     th {
       display: none;
     }
 
-    tr.separator th {
-      display: block;
+    tr.separator {
+      margin: 0;
+      border: none;
+
+      th {
+        display: block;
+      }
     }
 
     > tbody > tr > td {

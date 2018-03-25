@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def checkmark(text = nil, state = false)
-    out = state ? fa(:check, "success") : fa(:times, "muted")
+    out = state ? fa("check-circle", "success fa-lg") : fa(:minus, "muted fa-lg")
     out += content_tag(:span, text, class: "hidden-lg checkmark-label") if text
     out
   end

@@ -11,7 +11,7 @@
 		<%= content_tag :span, pluralize(*reservation.time_until) if reservation.start_date < 4.weeks.from_now && !reservation.past? %>
 		<%= content_tag(:span, "Currrent Guest", class: "label label-warning") if reservation.current? %>
 	</td>
-	<td class="status-muted"><%= reservation.status %></td>
+	<td class="status"><%= reservation_type_tag(reservation.status) %></td>
 	<td class="start-date"><%= reservation.start_date.utc.strftime("%a, %b %d") %></td>
 	<td class="end-date"><%= reservation.end_date.utc.strftime("%a, %b %d") %></td>
 	<td class="centered"><%= link_to checkmark("Cleaning Scheduled", reservation.cleaning_scheduled?),
