@@ -14,7 +14,15 @@ class TaskChecker
 
     return if reservations.empty?
     reservation = reservations.first
-    message = "#{reservation.name} arrives on #{reservation.start_date.strftime("%A, %b %d")} and has not had cleaning arranged!"
+    message = <<~HTML
+      <p>
+        #{reservation.name} arrives on #{reservation.start_date.strftime("%A, %b %d")} and has not had cleaning arranged!
+      </p>
+
+      <p style="font-size: 75%">
+        <a href="#{mail_url}">Open in Screendoor</a>
+      </p>
+    HTML
     send_mail(subject: "Guest needs cleaning arranged", text: message)
   end
 
@@ -26,7 +34,15 @@ class TaskChecker
 
     return if reservations.empty?
     reservation = reservations.first
-    message = "#{reservation.name} arrives on #{reservation.start_date.strftime("%A")} and has not received a welcome email!"
+    message = <<~HTML
+      <p>
+        #{reservation.name} arrives on #{reservation.start_date.strftime("%A")} and has not received a welcome email!
+      </p>
+
+      <p style="font-size: 75%">
+        <a href="#{mail_url(path: "/reservations/#{reservation.id}")}">Open in Screendoor</a>
+      </p>
+    HTML
     send_mail(subject: "Guest arrives in less than 3 days", text: message)
   end
 
@@ -37,7 +53,7 @@ class TaskChecker
     from = Email.new(email: 'screendoor@bettascove.com')
     to = Email.new(email: ENV['ADMIN_EMAIL'])
     subject = message_params[:subject]
-    content = Content.new(type: 'text/plain', value: message_params[:text])
+    content = Content.new(type: 'text/html', value: message_params[:text])
     mail = Mail.new(from, subject, to, content)
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
@@ -45,6 +61,14 @@ class TaskChecker
     puts response.status_code
     puts response.body
     puts response.headers
+  end
+
+  def mail_url(path: "/")
+    URI::HTTPS.build(
+      host:     ENV.fetch("BASE_HOST"),
+      userinfo: [ENV.fetch("LOGIN_USERNAME"), ENV.fetch("LOGIN_PASSWORD")].join(":"),
+      path:     path
+    )
   end
 
 end
