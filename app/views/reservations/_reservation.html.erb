@@ -7,7 +7,7 @@
 
 <tr class="reservation <%#= "info" if reservation.current? %> <%#= "warning" if reservation.soon? %>" data-id="<%= reservation.id %>">
 	<td class="name">
-		<%= link_to reservation.name, reservation %>
+		<%= link_to reservation.name, [:edit, reservation] %>
 		<%= content_tag :span, pluralize(*reservation.time_until) if reservation.start_date < 4.weeks.from_now && !reservation.past? %>
 		<%= content_tag(:span, "Currrent Guest", class: "label label-warning") if reservation.current? %>
 	</td>

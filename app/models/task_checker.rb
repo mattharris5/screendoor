@@ -20,7 +20,7 @@ class TaskChecker
       </p>
 
       <p style="font-size: 75%">
-        <a href="#{mail_url}">Open in Screendoor</a>
+        <a href="#{mail_url(path: "/reservations/housekeeping")}">Open in Screendoor</a>
       </p>
     HTML
     send_mail(subject: "Guest needs cleaning arranged", text: message)
@@ -40,7 +40,7 @@ class TaskChecker
       </p>
 
       <p style="font-size: 75%">
-        <a href="#{mail_url(path: "/reservations/#{reservation.id}")}">Open in Screendoor</a>
+        <a href="#{mail_url(path: "/reservations/#{reservation.id}/edit")}">Open in Screendoor</a>
       </p>
     HTML
     send_mail(subject: "Guest arrives in less than 3 days", text: message)

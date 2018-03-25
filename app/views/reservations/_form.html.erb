@@ -11,7 +11,23 @@
     </div>
   <% end %>
 
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :cleaning_scheduled %>
+      <%= fa(:calendar) %>
+      Cleaning Scheduled
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :welcome_sent %>
+      <%= fa(:key) %>
+      Welcome Sent
+    </label>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default" %>
   </div>
 <% end %>

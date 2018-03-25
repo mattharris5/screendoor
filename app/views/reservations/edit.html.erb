@@ -1,6 +1,14 @@
-<h1>Editing reservation</h1>
+<h1><%= @reservation.name %></h1>
+<ul class="list-inline">
+  <li>
+    <b>Check in:</b>
+    <%= @reservation.start_date.to_date.strftime("%A %b %d") %>
+  </li>
+
+  <li>
+    <b>Check out:</b>
+    <%= @reservation.end_date.to_date.strftime("%A %b %d") %>
+  </li>
+</ul>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @reservation %> |
-<%= link_to 'Back', reservations_path %>
