@@ -11,15 +11,12 @@ gem 'homeaway-api'
 gem 'sendgrid-ruby'
 gem 'rails_12factor'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'pg'
 
 group :development do
   gem 'sqlite3'
   gem 'dotrun'
   gem 'brakeman', require: false
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :assets do
